@@ -1,10 +1,10 @@
 import {test,expect,chromium} from '@playwright/test';
 
 
-test ('has title', async () => {
-const browser = await chromium.launch();
-const page = await browser.newPage();
-const context = await browser.newContext();
+test ('autorai ford focus', async () => {
+ const browser = await chromium.launch();
+ const page = await browser.newPage();
+  const context = await browser.newContext();
   
   await page.goto('https://auto.ria.com/uk/');
   await page.pause();
