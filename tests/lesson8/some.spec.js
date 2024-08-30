@@ -21,7 +21,9 @@ test ( "some test", async()=> {
    await page.locator('//a[@href="/en-US/docs/Web/XPath/Functions/key"]').click();
    await page.locator('//div[@class="toc-container"]//div[@class="document-toc-container"]//a[@href="#description"]').click();
    const xslKey = await page.locator('//div[@class="section-content"]//a[@href="/en-US/docs/Web/XSLT/Element/key"]').first();
+   await page.pause();
    await xslKey.click();
+   await page.pause();
  
    await page.close();
    await context.close();
