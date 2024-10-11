@@ -7,7 +7,7 @@ test ('autorai ford focus', async () => {
   const context = await browser.newContext();
   
   await page.goto('https://auto.ria.com/uk/');
-  await page.pause();
+  // await page.pause();
   await page.getByRole('link', { name: 'Розширений пошук' }).click();
   await page.locator('#autocomplete-brand-0 label').click();
   await page.getByText('Ford').first().click();

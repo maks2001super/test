@@ -1,73 +1,57 @@
-// let funk1 = async function () {
-//   let response= await fetch ('https://jsonplaceholder.typicode.com/comments/1')
-//  try{
-//   let comments = await response.json();
-//   return comments;
-// }catch (error) {
-//   return Promise.reject(error)
-// }
-// }
-
-
-// let funk2 = async function () {
-//  let response= await fetch ('https://jsonplaceholder.typicode.com/posts/2')
-//  try{
-//   let posts = await response.json();
-//   return posts;
-// }catch (error) {
-//   return Promise.reject(error)
-// }
-// }
-
-// Promise.all ([funk1(), funk2()])
-// .then (result =>{
-//   console.log('Promise.all result: ', result)
-// })
-
-// Promise.allSettled ([funk1(), funk2()])
-// .then (result =>{
-//   console.log('Promise.all result: ', result)
-// })
-
-// Перша асинхронна функція для отримання comments
 let funk1 = async function () {
+  const response = await fetch(
+    "https://jsonplaceholder.typicode.com/comments/1"
+  );
   try {
-    const response = await fetch('https://jsonplaceholder.typicode.com/comments/1'); // Виконуємо fetch запит
-    if (!response.ok) { // Перевіряємо чи запит виконано успішно
-      throw new Error(`Помилка при отриманні comments: статус ${response.status}`);
+    let comments = await response.json();
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
     }
-    const comments = await response.json(); // Чекаємо на перетворення відповіді в JSON
-    return comments; // Повертаємо результат
+    return comments;
   } catch (error) {
-    return Promise.reject(error); // Якщо виникає помилка, повертаємо Promise з відхиленням
+    return Promise.reject(error);
   }
-}
+};
 
-// Друга асинхронна функція для отримання posts
 let funk2 = async function () {
+  const response = await fetch("https://jsonplaceholder.typicode.com/posts/2");
   try {
-    const response = await fetch('https://jsonplaceholder.typicode.com/posts/2'); // Виконуємо fetch запит
-    if (!response.ok) { // Перевіряємо чи запит виконано успішно
-      throw new Error(`Помилка при отриманні posts: статус ${response.status}`);
+    let posts = await response.json();
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
     }
-    const posts = await response.json(); // Чекаємо на перетворення відповіді в JSON
-    return posts; // Повертаємо результат
+    setTimeout(() => {
+      return posts;
+    }, 10000);
   } catch (error) {
-    return Promise.reject(error); // Якщо виникає помилка, повертаємо Promise з відхиленням
+    return Promise.reject(error);
   }
-}
+};
 
-// Викликаємо обидві функції та передаємо їх у Promise.all
-Promise.all([funk1(), funk2()])
-  .then(result => {
-    console.log('Promise.all result:', result); // Виводимо результати виконання обох обіцянок
-  })
-  .catch(error => {
-    console.error('Promise.all помилка:', error); // Обробка помилки, якщо хоча б одна з обіцянок відхилена
-  });
+// Promise.all([funk1(), funk2()]).then((result) => {
+//   console.log("Promise.all result: ", result);
+// });
 
-// Викликаємо обидві функції та передаємо їх у Promise.allSettled
-Promise.allSettled([funk1(), funk2()])
-  .then(result => {
-    console.log('Promise.allSettled result:', result); // Виводимо всі результати, включаючи статуси обіцянок
-  });
+// Promise.allSettled([funk1(), funk2()]).then((result) => {
+//   console.log("Promise.allSettled result: ", result);
+// });
+
+// Promise.race([funk1(), funk2()]).then((result) => {
+//   console.log("Promise.race result: ", result);
+// });
+const func1 = () => {
+  return "max";
+};
+const func2 = () => {
+  return "ilya";
+};
+
+const test = (title, erhrtehrth) => {
+  console.log(title);
+  console.log(erhrtehrth() + " LOH");
+};
+
+test("test 1", () => {
+  return "ilya";
+});
+test("test 2", func2);
