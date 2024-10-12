@@ -3,21 +3,21 @@ import { test, expect, chromium } from "@playwright/test";
 let loginData = [
   {
     email: "maks.bezhentsev",
-    pass: "bobik123",
+    pass: "",
     result: "Home",
     locator: `(//span[@class="x1lliihq x193iq5w x6ikm8r x10wlt62 xlyipyv xuxw1ft"])[1]`,
   },
 
   {
     email: "ks.bezhentsev",
-    pass: "bobik123maks",
+    pass: "",
     result:
       "Sorry, your password was incorrect. Please double-check your password.",
     locator: `//div[@class="_ab2z"]`,
   },
   {
     email: "maks.bezhentsev",
-    pass: "Olxmanapiercing1004",
+    pass: "",
     result:
       "Sorry, your password was incorrect. Please double-check your password.",
     locator: `//div[@class="_ab2z"]`,

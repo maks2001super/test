@@ -25,14 +25,17 @@ module.exports = defineConfig({
 
   use: {
     screenshot: "only-on-failure",
-    trace: "on-first-retry",
+    trace: "on-first-retry",                            
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
       name: "chromium",
-      use: { ...devices["Desktop Chrome"] },
+      use: { ...devices["Desktop Chrome"],
+        
+       },
+      
     },
 
     {
