@@ -25,7 +25,7 @@ let loginData = [
 ];
 
 loginData.forEach(({ email, pass, result, locator }, index) => {
-  test(`Inst login test #${index + 1} for ${email}`, async () => {
+   test(`Inst login test #${index + 1} for ${email}`, async () => {
     const browser = await chromium.launch();
     const page = await browser.newPage();
 
